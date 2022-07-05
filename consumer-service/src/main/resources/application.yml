@@ -1,0 +1,14 @@
+server:
+  port: 2323
+rabbit-config:
+  host: localhost
+  queueName:
+    - "q1"
+    - "q2"
+    - "q3"
+    - "f1"
+    - "f2"
+    - "f3"
+    - "t1"
+    - "t2"
+    - "t3"

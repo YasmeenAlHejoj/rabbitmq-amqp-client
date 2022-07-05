@@ -1,0 +1,29 @@
+server:
+  port: 1212
+rabbit-config:
+   host: "localhost"
+   exchange:
+     - name: "poc-exchange-direct"
+       type: "direct"
+       binding:
+         - queue: "q1"
+           route: "route1"
+         - queue: "q2"
+           route: "route2"
+         - queue: "q3"
+           route: "route2"
+     - name: "poc-exchange-fanout"
+       type: "fanout"
+       binding:
+         - queue: "f1"
+         - queue: "f2"
+         - queue: "f3"
+     - name: "poc-exchange-topic"
+       type: "topic"
+       binding:
+         - queue: "t1"
+           route: "route1.*"
+         - queue: "t2"
+           route: "route1.#"
+         - queue: "t3"
+           route: "route1.test"
