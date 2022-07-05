@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+
 /**
  * @author YasmeenHj
  * created on 7/5/2022 at 3:40 PM
@@ -29,7 +31,12 @@ public class DeclareRabbit implements CommandLineRunner {
 
             for (BindingPropConfig config : ex.binding()) {
                 channel.queueDeclare(config.queue(), true, false, false, null);
-                channel.queueBind(config.queue(), ex.name(), config.route());
+                channel.queueBind(
+                    config.queue(),
+                    ex.name(),
+                    config.route(),
+                    config.header() == null ? null : new HashMap<>(config.header())
+                );
             }
         }
     }

@@ -27,3 +27,9 @@ rabbit-config:
            route: "route1.#"
          - queue: "t3"
            route: "route1.test"
+     - name: "poc-exchange-header"
+       type: "headers"
+       binding:
+         - queue: "h1"
+           header:
+             key1 : "value1"
